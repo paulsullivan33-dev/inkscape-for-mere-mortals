@@ -1,0 +1,13 @@
+Two spot checks the chapters quote.
+
+$ inkscape badge.svg --export-type=png --export-dpi=300 --export-filename=badge-300dpi.png
+
+
+$ file badge-300dpi.png
+badge-300dpi.png: PNG image data, 750 x 750, 8-bit/color RGBA, non-interlaced
+
+240 units is 2.5 inches (chapter 6's PDF page: 180 points).
+2.5 x 300 = 750: the dpi knob asks by resolution, not by size.
+
+$ inkscape --action-list | wc -l
+61

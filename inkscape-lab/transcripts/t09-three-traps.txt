@@ -1,0 +1,47 @@
+Trap 1: a file that does not exist.
+$ inkscape nofile.svg --query-all
+
+** (inkscape:66040): WARNING **: 08:30:16.856: Can't open file: /home/hatch/workspace/inkscape-labwork/nofile.svg (doesn't exist)
+
+** (inkscape:66040): WARNING **: 08:30:16.856: Can't open file: /home/hatch/workspace/inkscape-labwork/nofile.svg (doesn't exist)
+ink_file_open: '/home/hatch/workspace/inkscape-labwork/nofile.svg' cannot be opened!
+InkscapeApplication::document_open: Failed to open: /home/hatch/workspace/inkscape-labwork/nofile.svg
+ConcreteInkscapeApplication::on_open: failed to create document!
+
+Trap 2: an id that does not exist quietly answers for the whole drawing.
+(This run is shown untrimmed: the GtkRecentManager warning from
+t00's note is the first line of its output.)
+$ inkscape badge.svg --query-id=nosuchthing --query-width
+
+** (inkscape:66048): WARNING **: 08:30:17.458: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
+select_by_id: Did not find object with id: nosuchthing
+230
+
+(230 is the width of the entire badge, from t01 -- not an error.)
+
+Trap 3: an SVG cut off in the middle still 'works'.
+$ cat broken.svg
+<svg xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40"
+
+$ inkscape broken.svg --export-type=png --export-filename=broken.png
+/home/hatch/workspace/inkscape-labwork/broken.svg:2: parser error : Couldn't find end of Start Tag circle line 1
+
+^
+/home/hatch/workspace/inkscape-labwork/broken.svg:2: parser error : Premature end of data in tag svg line 1
+
+^
+
+
+$ file broken.png
+broken.png: PNG image data, 300 x 150, 8-bit/color RGBA, non-interlaced
+
+$ python3 -c 
+from PIL import Image
+im = Image.open('broken.png').convert('RGBA')
+px = list(im.getdata())
+print('black pixels:', sum(1 for p in px if p[:3] == (0, 0, 0) and p[3] == 255))
+black pixels: 4860
+
+The parser salvaged the unclosed circle and drew it, black and
+alone, on a default 300x150 page that the badge never asked for.
+All three traps exit 0. Check outputs, not exit codes.

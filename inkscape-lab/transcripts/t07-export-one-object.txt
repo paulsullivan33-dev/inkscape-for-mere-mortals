@@ -1,0 +1,9 @@
+$ inkscape badge.svg --export-id=star --export-id-only --export-type=png --export-filename=star-only.png
+
+Exporting only object with id="star"; all other objects hidden.
+
+$ file star-only.png
+star-only.png: PNG image data, 74 x 68, 8-bit/color RGBA, non-interlaced
+
+74x68: the star's own bounding box from t01 (74.4996 x 68.3997),
+nothing else in the picture, at the default 96 dpi.

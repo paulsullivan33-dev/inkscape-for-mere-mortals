@@ -1,0 +1,23 @@
+The star before (from t01): x 82.7502, y 84.7502, width 74.4996, height 68.3997
+
+$ inkscape badge.svg --actions=select-by-id:star;transform-scale:1.5 --export-filename=badge-scaled.svg
+
+
+$ inkscape badge-scaled.svg --query-id=star --query-x --query-y --query-width --query-height
+
+64.1253
+67.6503
+111.749
+102.6
+
+74.4996 x 1.5 = 111.749 and 68.3997 x 1.5 = 102.6: the scale is exact,
+and the centre stayed at x=120 (64.1253 + 111.749/2).
+
+$ inkscape badge.svg --actions=select-by-id:star;transform-rotate:30 --export-filename=badge-rotated.svg
+
+
+$ inkscape badge-rotated.svg --query-id=star --query-width --query-height
+
+74.2451
+71.0707
+

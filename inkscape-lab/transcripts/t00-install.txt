@@ -1,0 +1,42 @@
+Installing Inkscape the lab's way: the Ubuntu 24.04 packages,
+downloaded but not installed, unpacked into a private folder.
+On a normal machine: sudo apt install inkscape (see chapter 3).
+
+$ ls debs
+inkscape_1.2.2-2ubuntu12_amd64.deb
+lib2geom1.2.0t64_1.2.2-3.1build1_amd64.deb
+libatkmm-1.6-1v5_2.28.4-1build4_amd64.deb
+libcairomm-1.0-1v5_1.14.5-1build1_amd64.deb
+libgc1_1%3a8.2.6-1build1_amd64.deb
+libglibmm-2.4-1t64_2.66.7-1build1_amd64.deb
+libgspell-1-2_1.12.2-1build4_amd64.deb
+libgspell-1-common_1.12.2-1build4_all.deb
+libgtkmm-3.0-1t64_3.24.9-1_amd64.deb
+libmagick++-6.q16-9t64_8%3a6.9.12.98+dfsg1-5.2build2_amd64.deb
+libpangomm-1.4-1v5_2.46.4-1build3_amd64.deb
+libpotrace0_1.16-2build1_amd64.deb
+libsigc++-2.0-0v5_2.12.1-2_amd64.deb
+libsoup-2.4-1_2.74.3-6ubuntu1.9_amd64.deb
+libsoup2.4-common_2.74.3-6ubuntu1.9_all.deb
+lock
+partial
+
+$ du -sh debs root
+24M	debs
+109M	root
+
+$ for d in debs/*.deb; do dpkg -x "$d" root/; done   # (already run; this is the unpack step)
+$ cat bin/inkscape   # the shim every later command uses
+#!/bin/sh
+# Lab shim: run the extracted Ubuntu Inkscape with its private libraries.
+export LD_LIBRARY_PATH="$HOME/workspace/inkscape-labwork/root/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec "$HOME/workspace/inkscape-labwork/root/usr/bin/inkscape" "$@"
+
+$ inkscape --version
+Inkscape 1.2.2 (b0a8486541, 2022-12-01)
+
+On many runs in this headless lab, one extra line appears on
+stderr, a 'Failed to wrap object of type GtkRecentManager'
+warning (it shows in t09). It is desktop-session noise, not an
+error in any drawing; transcripts leave that one line out
+where it would only repeat.

@@ -1,0 +1,25 @@
+$ inkscape badge.svg --export-type=pdf --export-filename=badge.pdf
+
+
+$ file badge.pdf
+badge.pdf: PDF document, version 1.5
+
+$ pdfinfo badge.pdf
+Creator:         Inkscape 1.2.2 (https://inkscape.org)
+Producer:        cairo 1.18.0 (https://cairographics.org)
+CreationDate:    Fri Oct 30 08:30:07 2026 UTC
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           1
+Encrypted:       no
+Page size:       180 x 180 pts
+Page rot:        0
+File size:       8190 bytes
+Optimized:       no
+PDF version:     1.5
+

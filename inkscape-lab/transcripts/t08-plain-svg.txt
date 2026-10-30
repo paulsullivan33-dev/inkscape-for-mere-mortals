@@ -1,0 +1,14 @@
+$ inkscape badge-scaled.svg --export-plain-svg --export-filename=badge-scaled-plain.svg
+
+
+$ ls -l badge-scaled.svg badge-scaled-plain.svg
+-rw-rw---- 1 root root 1775 Oct 30 08:30 badge-scaled-plain.svg
+-rw-rw---- 1 root root 2201 Oct 30 08:30 badge-scaled.svg
+
+$ grep -c sodipodi badge-scaled.svg badge-scaled-plain.svg
+badge-scaled.svg:3
+badge-scaled-plain.svg:0
+
+The file Inkscape saved carries its own workshop notes
+(sodipodi/inkscape names). The plain export is the same
+drawing with the notes stripped, for handing to the web.

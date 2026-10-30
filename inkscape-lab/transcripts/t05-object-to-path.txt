@@ -1,0 +1,32 @@
+$ grep -c <circle badge.svg
+2
+
+$ inkscape badge.svg --actions=select-by-id:disc;object-to-path --export-filename=badge-discpath.svg
+
+
+$ grep -c <circle badge-discpath.svg
+1
+
+$ python3 /home/hatch/workspace/inkscape-for-mere-mortals/inkscape-lab/count-segments.py badge-discpath.svg disc
+badge-discpath.svg #disc: 3 commands, 15 coordinate pairs, 89 characters of path data
+
+The disc is still there, at the same size -- as four arcs:
+$ inkscape badge-discpath.svg --query-id=disc --query-width --query-height
+
+127
+127
+
+
+$ grep -c <text badge.svg
+2
+
+$ inkscape badge.svg --actions=select-by-id:label;object-to-path --export-filename=badge-textpath.svg
+
+
+$ grep -c <text badge-textpath.svg
+0
+
+$ grep -c <path badge-textpath.svg
+32
+
+No <text> is left: the label is now a group of letter outlines.

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="240" viewBox="0 0 240 240"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>North Pier Coffee badge</title>
+  <!-- outer ring -->
+  <circle id="ring" cx="120" cy="120" r="112"
+          fill="#fdf6e3" stroke="#264653" stroke-width="6"/>
+  <!-- the path the label text runs along (not drawn itself) -->
+  <path id="label-path" fill="none" stroke="none"
+        d="M 120,120 m -94,0 a 94,94 0 1,1 188,0 a 94,94 0 1,1 -188,0"/>
+  <!-- words around the ring -->
+  <text id="label" font-family="DejaVu Sans" font-size="16.5"
+        font-weight="bold" fill="#264653" letter-spacing="2">
+    <textPath xlink:href="#label-path" startOffset="2">
+      NORTH PIER COFFEE &#8226; FRESH EVERY DAY &#8226;
+    </textPath>
+  </text>
+  <!-- inner disc -->
+  <circle id="disc" cx="120" cy="128" r="62"
+          fill="#2a9d8f" stroke="#264653" stroke-width="3"/>
+  <!-- five-pointed star, centre 120,120, outer r 34, inner r 13.6 -->
+  <polygon id="star" fill="#e9c46a" stroke="#264653" stroke-width="2.5"
+           stroke-linejoin="round"
+           points="120,86 130.5,109.5 156,110.6 136.6,127.3 143,151.9
+                   120,138 97,151.9 103.4,127.3 84,110.6 109.5,109.5"/>
+  <!-- waves under the star -->
+  <path id="waves" fill="none" stroke="#fdf6e3" stroke-width="4"
+        stroke-linecap="round"
+        d="M 88,168 q 8,-8 16,0 t 16,0 t 16,0 t 16,0"/>
+</svg>

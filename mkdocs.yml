@@ -1,0 +1,27 @@
+site_name: Inkscape for Mere Mortals
+site_description: Drawing with vectors instead of pixels. Logos, diagrams and artwork stored as shapes and numbers, so the same small file prints sharp at any size, edited in Inkscape on your own machine, measured and exported from the command line as well as the mouse, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/inkscape-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text CC BY 4.0, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Inkscape Is: what-inkscape-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Inkscape: installing-inkscape.md
+  - Your First Drawing: your-first-drawing.md
+  - Measuring the Drawing: measuring-the-drawing.md
+  - Exporting — PNG and PDF: exporting-png-and-pdf.md
+  - Editing by Command: editing-by-command.md
+  - Shapes into Paths: shapes-into-paths.md
+  - Text and Fonts: text-and-fonts.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

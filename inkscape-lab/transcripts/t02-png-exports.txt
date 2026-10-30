@@ -1,0 +1,33 @@
+$ inkscape badge.svg --export-type=png --export-width=480 --export-filename=badge-480.png
+
+
+$ inkscape badge.svg --export-type=png --export-width=96 --export-filename=badge-96.png
+
+
+$ file badge-480.png badge-96.png
+badge-480.png: PNG image data, 480 x 480, 8-bit/color RGBA, non-interlaced
+badge-96.png:  PNG image data, 96 x 96, 8-bit/color RGBA, non-interlaced
+
+$ python3 /home/hatch/workspace/inkscape-for-mere-mortals/inkscape-lab/check-png.py badge-480.png badge-96.png
+badge-480.png: 480x480 px, 995 distinct colours, 167020 of 230400 pixels not transparent
+    (253, 246, 227, 255): 87940 px
+    (255, 255, 255, 0): 63380 px
+    (42, 157, 143, 255): 35189 px
+badge-96.png: 96x96 px, 731 distinct colours, 6796 of 9216 pixels not transparent
+    (253, 246, 227, 255): 2967 px
+    (255, 255, 255, 0): 2420 px
+    (42, 157, 143, 255): 1248 px
+
+Colour key: (253, 246, 227) is the cream ring, (42, 157, 143)
+the teal disc, (233, 196, 106) the gold star, (38, 70, 83) the
+navy of the ring's edge and the letters. Exact counts of the
+last two in the big picture:
+$ python3 -c 
+from PIL import Image
+im = Image.open('badge-480.png').convert('RGBA')
+px = list(im.getdata())
+print('navy pixels:', sum(1 for p in px if p[:3] == (38, 70, 83) and p[3] == 255))
+print('gold pixels:', sum(1 for p in px if p[:3] == (233, 196, 106) and p[3] == 255))
+navy pixels: 27414
+gold pixels: 5814
+
